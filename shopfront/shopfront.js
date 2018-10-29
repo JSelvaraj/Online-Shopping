@@ -34,6 +34,14 @@ function updateLineCost(e, item_id) {
   let c = p * q; // implicit type conversion
   c = c.toFixed(2); // 2 decimal places always.
   setStockItemValue(item_id, "line_cost", c);
-
   // Also need to update sub_total, delivery_charge, vat, and total.
+}
+
+function updateSubtotal () {
+  let line_costs = document.getElementsByTagName("line_cost");
+  let subtotal = 0;
+  for (i = 0;i <line_costs.length;i++) {
+    subtotal += line_costs[i].innerHTML;
+  }
+  document.getElementById(subtotal).innerHTML = subtotal;
 }
