@@ -43,5 +43,5 @@ function updateSubtotal () {
   for (i = 0;i <line_costs.length;i++) {
     subtotal += line_costs[i].innerHTML;
   }
-  document.getElementById(subtotal).innerHTML = subtotal;
+  document.getElementById("sub_total").innerHTML = subtotal;
 }
