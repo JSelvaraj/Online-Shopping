@@ -52,7 +52,7 @@ fclose($f);
 
 <hr />
 
-<form name="order" action="shopback.php" method="POST">
+<form name="order" id="order" onsubmit="return validateMyForm();" action="shopback.php" method="POST">
 
 <stock_list>
 
@@ -87,7 +87,7 @@ foreach(array_keys($stock_list) as $id) {
 
 <br />
 
-<p>Sub-total: <span id="sub_total"></span></p>
+<p>Sub-total: <span id="sub_total" value=""></span></p>
 
 <p>Delivery charge: <span id="delivery_charge"></span></p>
 
@@ -98,7 +98,7 @@ foreach(array_keys($stock_list) as $id) {
 <hr />
 
 <p>Credit Card type:
-<select name="cc_type" size="1" required>
+<select name="cc_type" size="1" onchange="validateCCNumber()" required>
 <option value="" selected>-</option>
 <option value="mastercard">MasterCard</option>
 <option value="visa">Visa</option>
@@ -109,26 +109,26 @@ foreach(array_keys($stock_list) as $id) {
 <input type="text" name="cc_number" pattern="[0-9]{16}" size="16" /></p>
 
 <p>Name on Credit Card (also the name for delivery):
-<input type="text" name="cc_name" size="80" /></p>
+<input type="text" name="cc_name" size="80" required/></p>
 
 <p>Credit Card security code:
-<input type="text" name="cc_code" pattern="[0-9]{3}" size="3" /></p>
+<input type="text" name="cc_code" pattern="[0-9]{3}" size="3" required /></p>
 
 <p>Delivery street address:
-<input type="text" name="delivery_address" size="128" /></p>
+<input type="text" name="delivery_address" size="128" required/></p>
 
 <p>Delivery postcode:
-<input type="text" name="delivery_postcode" size="40" /></p>
+<input type="text" name="delivery_postcode" size="40" required/></p>
 
 <p>Delivery country:
-<input type="text" name="delivery_country" size="80" /></p>
+<input type="text" name="delivery_country" size="80" required/></p>
 
 <p>Email:
-<input type="email" name="email" /></p>
+<input type="email" pattern="[a-zA-Z]+[@][a-zA-Z]+([.][a-zA-Z]+)+" name="email" required/></p>
 
 <hr />
 
-<input type="submit" value="Place Order" />
+<input type="submit"  value="Place Order" />
 
 </form>
 
