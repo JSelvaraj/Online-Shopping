@@ -65,3 +65,12 @@ line_cost {
   background-color: blue;
   color: white;
 }
+
+totals {
+  display: block;
+}
+span {
+  align-self: right;
+}
+
+

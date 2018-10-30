@@ -44,7 +44,7 @@ fclose($f);
   <title>Items for sale</title>
 </head>
 
-<body>
+<body onload="hidePayment()">
 
 <script src="shopfront.js"></script>
 
@@ -86,7 +86,6 @@ foreach(array_keys($stock_list) as $id) {
 </stock_list>
 
 <br />
-
 <p>Sub-total: <span name="sub_total" id="sub_total" value=""></span></p>
 
 <p>Delivery charge: <span id="delivery_charge" name="delivery_charge"></span></p>
@@ -94,9 +93,9 @@ foreach(array_keys($stock_list) as $id) {
 <p>VAT: <span id="vat" name="vat"></span></p>
 
 <p>Total: <span id="total" name="total"></span></p>
-
+<input type="button" onclick="showPaymentInfoForm()" value="Add Payment Details" />
 <hr />
-
+<credit_info>
 <p>Credit Card type:
 <select name="cc_type" size="1" onchange="validateCCNumber()" required>
 <option value="" selected>-</option>
@@ -106,33 +105,32 @@ foreach(array_keys($stock_list) as $id) {
 </p>
 
 <p>Credit Card number:
-<input type="text" name="cc_number" size="16" /></p>
+<input type="text" name="cc_number" size="16" required oninvalid="invalidInput(this)" onchange="validCCNum(this)" /></p>
 
 <p>Name on Credit Card (also the name for delivery):
-<input type="text" name="cc_name" size="80" required/></p>
+<input type="text" name="cc_name" size="80" oninvalid="invalidInput(this)" required onchange="present(this)"/></p>
 
 <p>Credit Card security code:
-<input type="text" name="cc_code" pattern="[0-9]{3}" size="3" required /></p>
+<input type="text" name="cc_code" pattern="[0-9]{3}" size="3" required oninvalid="invalidInput(this)" onchange="validCCCode(this)"/></p>
 
 <p>Delivery street address:
-<input type="text" name="delivery_address" size="128" required/></p>
+<input type="text" name="delivery_address" size="128" required oninvalid="invalidInput(this)" onchange="present(this)"/></p>
 
 <p>Delivery postcode:
-<input type="text" name="delivery_postcode" size="40" required/></p>
+<input type="text" name="delivery_postcode" size="40" required oninvalid="invalidInput(this)"/></p>
 
 <p>Delivery country:
-<input type="text" name="delivery_country" size="80" required/></p>
+<input type="text" name="delivery_country" size="80" required oninvalid="invalidInput(this)"/></p>
 
 <p>Email:
-<input type="email" pattern="[a-zA-Z]+[@][a-zA-Z]+([.][a-zA-Z]+)+" name="email" requried/></p>
+<input type="email" pattern="[a-zA-Z]+[@][a-zA-Z]+(?:[.][a-zA-Z]+)+" name="email" required oninvalid="invalidInput(this)"/></p>
 
 <hr />
 
-<input type="submit"  value="Place Order" />
 
 </form>
-
+<input type="submit" value="Place Order" />
 <hr />
-
+</credit_info>
 </body>
 </html>
