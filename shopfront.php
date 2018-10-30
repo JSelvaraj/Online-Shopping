@@ -105,32 +105,58 @@ foreach(array_keys($stock_list) as $id) {
 </p>
 
 <p>Credit Card number:
-<input type="text" name="cc_number" size="16" required oninvalid="invalidInput(this)" onchange="validCCNum(this)" /></p>
+<input type="text" name="cc_number" size="16" required oninvalid="invalidInput(this); validCCNum(this);" onchange="validCCNum(this)" /></p>
+<span class="popuptext" id="cc_number_requirements">
+  <li>Credit Card Number must be 16 characters long</li>
+  <li>The first number of a visa card must be 4</li>
+  <li>The first number of a mastercard must be 5</li>
+</span>
 
 <p>Name on Credit Card (also the name for delivery):
-<input type="text" name="cc_name" size="80" oninvalid="invalidInput(this)" required onchange="present(this)"/></p>
+<input type="text" name="cc_name" size="80" oninvalid="invalidInput(this); validCCName(this);" required onchange="validCCName(this)"/></p>
+<span class="popuptext" id="cc_name_requirements"> 
+  <li>Required</li>
+</span>
+
 
 <p>Credit Card security code:
-<input type="text" name="cc_code" pattern="[0-9]{3}" size="3" required oninvalid="invalidInput(this)" onchange="validCCCode(this)"/></p>
+<input type="text" id="cc_code" name="cc_code" pattern="[0-9]{3}" size="3" required oninvalid="invalidInput(this); validCCCode(this);" onchange="validCCCode(this)"/></p>
+<span class="popuptext" id="cc_code_requirements"> 
+    <li>Code my be at least 3 characters long</li>
+    <li>Security Code my be a positive number</li>
+  </span>
 
 <p>Delivery street address:
-<input type="text" name="delivery_address" size="128" required oninvalid="invalidInput(this)" onchange="present(this)"/></p>
+<input type="text" name="delivery_address" size="128" required oninvalid="invalidInput(this); validAddress(this);" onchange="validAddress(this)"/></p>
+<span class="popuptext" id="delivery_address_req">  
+  <li>Required</li>
+</span>
 
 <p>Delivery postcode:
-<input type="text" name="delivery_postcode" size="40" required oninvalid="invalidInput(this)"/></p>
-
+<input type="text" name="delivery_postcode" size="40" required oninvalid="invalidInput(this); validPostcode(this);" onchange="validPostcode(this)"/></p>
+<span class="popuptext" id="delivery_postcode_req"> 
+  <li>Required</li>
+</span>
 <p>Delivery country:
-<input type="text" name="delivery_country" size="80" required oninvalid="invalidInput(this)"/></p>
+<input type="text" name="delivery_country" size="80" required oninvalid="invalidInput(this); validDeliveryCountry(this);" onchange="validDeliveryCountry(this)"/></p>
+<span class="popuptext" id="delivery_country_req"> 
+  <li>Required</li>
+</span>
 
 <p>Email:
-<input type="email" pattern="[a-zA-Z]+[@][a-zA-Z]+(?:[.][a-zA-Z]+)+" name="email" required oninvalid="invalidInput(this)"/></p>
-
+<input type="email" pattern="[a-zA-Z]+[@][a-zA-Z]+(?:[.][a-zA-Z]+)+" name="email" required oninvalid="invalidInput(this); validEmail(this)" onchange="validEmail(this)"/></p>
+<span class="popuptext" id="email_requirements">     
+  <li>Must be a valid email address</li>
+</span>
 <hr />
 
 
 </form>
 <input type="submit" value="Place Order" />
-<hr />
+
+
 </credit_info>
+<hr />
+
 </body>
 </html>

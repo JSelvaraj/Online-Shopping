@@ -73,4 +73,10 @@ span {
   align-self: right;
 }
 
+input[name="delivery_address"] {
+  width: 600px;
+}
 
+.popuptext {
+  display: none;
+}

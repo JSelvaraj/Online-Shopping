@@ -119,26 +119,77 @@ function validCCNum(obj) {
   let cc_number = obj.value;
   let cc_type = document.getElementsByName("cc_type")[0].value;
   switch (cc_type) {
+    case "":
     case "visa":
     if (cc_number.substring(0, 1) == "4" && cc_number.length == 16) {
       obj.style.border = "2px solid green";
+      document.getElementById("cc_number_requirements").style.display = "none";
+    } else {
+      document.getElementById("cc_number_requirements").style.display = "inline";
     }
     break;
     case "mastercard":
     if (cc_number.substring(0, 1) == "5" && cc_number.length == 16) {
       obj.style.border = "2px solid green";
+      document.getElementById("cc_number_requirements").style.display = "none";
+    } else {
+      document.getElementById("cc_number_requirements").style.display = "inline";
     }
   }
 }
 
-function present(obj) {
+function validCCName(obj) {
   if (obj.value.length > 0) {
     obj.style.border = "2px solid green";
+    document.getElementById("cc_name_requirements").style.display = "none";
+  } else {
+    document.getElementById("cc_name_requirements").style.display = "inline";
   }
 }
 
 function validCCCode(obj) {
   if (obj.value.length == 3 && obj.value > 0) {
     obj.style.border = "2px solid green";
+    document.getElementById("cc_code_requirements").style.display = "none";
+  } else {
+    document.getElementById("cc_code_requirements").style.display = "inline";
   }
 }
+
+function validAddress(obj) {
+  if (obj.value.length > 0) {
+    obj.style.border = "2px solid green";
+    document.getElementById("delivery_address_req").style.display = "none";
+  } else {
+    document.getElementById("delivery_address_req").style.display = "inline";
+  }
+}
+
+function validPostcode(obj) {
+  if (obj.value.length > 0) {
+    obj.style.border = "2px solid green";
+    document.getElementById("delivery_postcode_req").style.display = "none";
+  } else {
+    document.getElementById("delivery_postcode_req").style.display = "inline";
+  }
+}
+
+function validDeliveryCountry(obj) {
+  if (obj.value.length > 0) {
+    obj.style.border = "2px solid green";
+    document.getElementById("delivery_country_req").style.display = "none";
+  } else {
+    document.getElementById("delivery_country_req").style.display = "inline";
+  }
+}
+
+function validEmail(obj) {
+  pattern = /[a-zA-Z]+[@][a-zA-Z]+(?:[.][a-zA-Z]+)+/; 
+  if (obj.style.length > 0 && pattern.test(obj.value)) {
+    obj.style.border = "2px solid green";
+    document.getElementById("email_requirements").style.display = "none";
+  } else {
+    document.getElementById("email_requirements").style.display = "inline";
+  }
+}
+
