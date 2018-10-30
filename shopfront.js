@@ -30,6 +30,9 @@ function setStockItemValue(item_id, element, value) {
  */
 function updateLineCost(e, item_id) {
   let p = getStockItemValue(item_id, "item_price");
+  if (e.value == "") {
+    e.value = 0;
+  }
   let q = e.value;
   let c = p * q; // implicit type conversion
   c = c.toFixed(2); // 2 decimal places always.
@@ -87,7 +90,7 @@ function validateMyForm(){
   if (confirm("Are you sure you want to submit?")) {
     document.getElementById("order").submit();
     return true;
-} else {
-  return false;
-}
+  } else {
+    return false;
+  }
 }

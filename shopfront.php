@@ -124,7 +124,7 @@ foreach(array_keys($stock_list) as $id) {
 <input type="text" name="delivery_country" size="80" required/></p>
 
 <p>Email:
-<input type="email" pattern="[a-zA-Z]+[@][a-zA-Z]+([.][a-zA-Z]+)+" name="email" required/></p>
+<input type="email" pattern="[a-zA-Z]+[@][a-zA-Z]+([.][a-zA-Z]+)+" name="email" requried/></p>
 
 <hr />
 
